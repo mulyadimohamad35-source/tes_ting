@@ -1,0 +1,47 @@
+<!-- Segitiga Checker HTML -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Jenis Segitiga</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f9; color: #333; }
+        .container { max-width: 400px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 2px 8px #ccc; }
+        input[type="number"] { width: 80px; padding: 5px; margin: 5px; }
+        button { padding: 8px 16px; background: #4CAF50; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+        button:hover { background: #388e3c; }
+        .result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cek Jenis Segitiga</h2>
+        <label>Sisi A: <input type="number" id="a" min="1"></label><br>
+        <label>Sisi B: <input type="number" id="b" min="1"></label><br>
+        <label>Sisi C: <input type="number" id="c" min="1"></label><br>
+        <button onclick="cekSegitiga()">Cek</button>
+        <div class="result" id="hasil"></div>
+    </div>
+    <script>
+        function cekSegitiga() {
+            const a = Number(document.getElementById('a').value);
+            const b = Number(document.getElementById('b').value);
+            const c = Number(document.getElementById('c').value);
+            let hasil = "";
+
+            if (a <= 0 || b <= 0 || c <= 0) {
+                hasil = "Masukkan panjang sisi yang valid!";
+            } else if (a + b <= c || a + c <= b || b + c <= a) {
+                hasil = "Bukan segitiga!";
+            } else if (a === b && b === c) {
+                hasil = "Segitiga Sama Sisi";
+            } else if (a === b || b === c || a === c) {
+                hasil = "Segitiga Sama Kaki";
+            } else {
+                hasil = "Segitiga Sembarang";
+            }
+            document.getElementById('hasil').textContent = hasil;
+        }
+    </script>
+</body>
+</html>
